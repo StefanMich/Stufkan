@@ -22,8 +22,8 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void HeapsortTest()
         {
-            int[] A = { 1, 6, 3, 4, 7, 2, 5, 8, 9, 2 };
-            int[] B = { 1, 2, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>(){ 1, 6, 3, 4, 7, 2, 5, 8, 9, 2 };
+            List<int> B = new List<int>(){ 1, 2, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             maxheap = new MaxPriorityQueue<int>(A);
             maxheap.Heapsort();
@@ -34,7 +34,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void BuildMaxHeapTest()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             maxheap = new MaxPriorityQueue<int>(A);
             
@@ -55,7 +55,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void BuildMinHeapTest()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             minheap = new MinPriorityQueue<int>(A);
 
@@ -75,7 +75,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void MaxHeapifyTest2()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             maxheap = new MaxPriorityQueue<int>(A);
 
             maxheap.Heapify(1);
@@ -94,7 +94,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void MaxHeapifyTest()
         {
-            int[] A = { 1, 2, 3, 4, 5 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5 };
             maxheap = new MaxPriorityQueue<int>(A);
 
             maxheap.Heapify(0);
@@ -109,7 +109,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void swapTest()
         {
-            int[] A = { 1, 2, 3, 4, 5 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5 };
 
             maxheap = new MaxPriorityQueue<int>(A);
 
@@ -124,7 +124,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void swapTest2()
         {
-            int[] A = { 1, 2, 3, 4, 5 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5 };
             maxheap = new MaxPriorityQueue<int>(A);
 
             maxheap.swap(4, 0);
@@ -138,7 +138,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void swapTest3()
         {
-            int[] A = { 1, 2, 3, 4, 5 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5 };
             maxheap = new MaxPriorityQueue<int>(A);
 
             maxheap.swap(3, 2);
@@ -152,7 +152,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void HeapExtractTest()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             maxheap = new MaxPriorityQueue<int>(A);
 
@@ -165,7 +165,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void HeapExtractTest2()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             maxheap = new MaxPriorityQueue<int>(A);
 
@@ -196,7 +196,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void IncreaseKeyTest()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             minheap = new MinPriorityQueue<int>(A);
 
@@ -217,7 +217,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void DecreaseKeyTest()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             maxheap = new MaxPriorityQueue<int>(A);
 
@@ -238,7 +238,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void ParentTestIndex8()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             minheap = new MinPriorityQueue<int>(A);
             PrivateObject accessor = new PrivateObject(minheap);
@@ -250,7 +250,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void ParentTestIndex3()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             minheap = new MinPriorityQueue<int>(A);
             PrivateObject accessor = new PrivateObject(minheap);
@@ -261,7 +261,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void ParentTestIndex1()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             minheap = new MinPriorityQueue<int>(A);
             PrivateObject accessor = new PrivateObject(minheap);
@@ -273,7 +273,7 @@ namespace DataStructures.Tests
         [TestMethod()]
         public void ParentTestIndex6()
         {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> A = new List<int>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             minheap = new MinPriorityQueue<int>(A);
             PrivateObject accessor = new PrivateObject(minheap);
@@ -282,51 +282,93 @@ namespace DataStructures.Tests
             Assert.AreEqual(k, 2);
         }
 
-        [TestMethod()]
-        public void ParentTestIndex4()
-        {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-            minheap = new MinPriorityQueue<int>(A);
-            PrivateObject accessor = new PrivateObject(minheap);
-            int k = (int)accessor.Invoke("parent", 4);
-
-            Assert.AreEqual(k, 1);
-        }
-
-        [TestMethod()]
-        public void ParentTestIndex7()
-        {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-            minheap = new MinPriorityQueue<int>(A);
-            PrivateObject accessor = new PrivateObject(minheap);
-            int k = (int)accessor.Invoke("parent", 7);
-
-            Assert.AreEqual(k, 3);
-        }
-        [TestMethod()]
-        public void ParentTestIndex5()
-        {
-            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-            minheap = new MinPriorityQueue<int>(A);
-            PrivateObject accessor = new PrivateObject(minheap);
-            int k = (int)accessor.Invoke("parent", 5);
-
-            Assert.AreEqual(k, 2);
-        }
 
         [TestMethod()]
         public void InsertTest()
         {
-            int[] A = { 1 };
+            List<int> A = new List<int>() { 1 };
 
             minheap = new MinPriorityQueue<int>(A);
             minheap.Insert(2);
 
             Assert.AreEqual(A[0], 1);
             Assert.AreEqual(A[1], 2);
+        }
+
+        [TestMethod()]
+        public void InsertTest2()
+        {
+            List<int> A = new List<int>() { 1 ,2,3,4};
+
+            minheap = new MinPriorityQueue<int>(A);
+            minheap.BuildHeap();
+            minheap.Insert(2);
+
+            Assert.AreEqual(A[0], 1);
+            Assert.AreEqual(A[1], 2);
+            Assert.AreEqual(A[2], 3);
+            Assert.AreEqual(A[3], 4);
+            Assert.AreEqual(A[4], 2);
+        }
+
+        [TestMethod()]
+        public void InsertTestMax()
+        {
+            List<int> A = new List<int>() { 1 };
+
+            maxheap = new MaxPriorityQueue<int>(A);
+            maxheap.Insert(2);
+
+            Assert.AreEqual(A[0], 2);
+            Assert.AreEqual(A[1], 1);
+        }
+
+        [TestMethod()]
+        public void InsertTestMax2()
+        {
+            List<int> A = new List<int>() { 4,3,2,1 };
+
+            maxheap = new MaxPriorityQueue<int>(A);
+            maxheap.BuildHeap();
+            maxheap.Insert(2);
+
+            Assert.AreEqual(A[0], 4);
+            Assert.AreEqual(A[1], 3);
+            Assert.AreEqual(A[2], 2);
+            Assert.AreEqual(A[3], 1);
+            Assert.AreEqual(A[4], 2);
+        }
+        [TestMethod()]
+        public void InsertTestMax3()
+        {
+            List<int> A = new List<int>() { 4, 3, 2, 1 };
+
+            maxheap = new MaxPriorityQueue<int>(A);
+            maxheap.BuildHeap();
+            maxheap.Insert(0);
+
+            Assert.AreEqual(A[0], 4);
+            Assert.AreEqual(A[1], 3);
+            Assert.AreEqual(A[2], 2);
+            Assert.AreEqual(A[3], 1);
+            Assert.AreEqual(A[4], 0);
+        }
+        [TestMethod()]
+        public void InsertTestMax4()
+        {
+            List<int> A = new List<int>() { 4, 3, 2, 1 };
+
+            maxheap = new MaxPriorityQueue<int>(A);
+            maxheap.BuildHeap();
+            maxheap.Insert(5);
+            maxheap.Insert(3);
+
+            Assert.AreEqual(A[0], 5);
+            Assert.AreEqual(A[1], 4);
+            Assert.AreEqual(A[2], 3);
+            Assert.AreEqual(A[3], 1);
+            Assert.AreEqual(A[4], 3);
+            Assert.AreEqual(A[5], 2);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DataStructures
         HeapArray a;
 
         public HeapArray A { get { return a; } }
-        public Heap(T[] array)
+        public Heap(List<T> array)
         {
             a = new HeapArray(array);
         }
@@ -120,17 +120,17 @@ namespace DataStructures
         /// </summary>
         public class HeapArray
         {
-            T[] a;
+            List<T> a;
             int heapsize;
 
-            public T[] Array { get { return a; } set { a = value; } }
+            public List<T> Array { get { return a; } set { a = value; } }
             public int Heapsize { get { return heapsize; } set { heapsize = value; } }
 
-            public int Length { get { return Array.Length; } }
-            public HeapArray(T[] A)
+            public int Length { get { return Array.Count; } }
+            public HeapArray(List<T> A)
             {
                 this.a = A;
-                this.heapsize = A.Length -1;
+                this.heapsize = A.Count -1;
             }
 
             public T this[int index]
@@ -138,6 +138,36 @@ namespace DataStructures
                 get { return a[index]; }
                 set { a[index] = value; }
             }
+        }
+    }
+
+    public class MinHeap<T> : Heap<T> where T : IComparable<T>
+    {
+        public MinHeap(List<T> A) : base(A)
+        {
+
+        }
+        public override bool Compare(int first, int second)
+        {
+            if (first > second)
+                return false;
+            else return true;
+        }
+    }
+
+    public class MaxHeap<T> : Heap<T> where T : IComparable<T>
+
+    {
+        public MaxHeap(List<T> A) :base(A)
+        {
+
+        }
+
+        public override bool Compare(int first, int second)
+        {
+            if (first > second)
+                return true;
+            else return false;
         }
     }
 

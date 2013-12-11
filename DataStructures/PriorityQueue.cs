@@ -8,7 +8,7 @@ namespace DataStructures
 {
     public abstract class PriorityQueue<T> : Heap<T> where T : IComparable<T>
     {
-        public PriorityQueue(T[] A)
+        public PriorityQueue(List<T> A)
             : base(A)
         {
 
@@ -24,22 +24,33 @@ namespace DataStructures
             Heapify(0);
             return max;
         }
-    }
 
-
-    public class MinPriorityQueue<T> : PriorityQueue<T> where T : IComparable<T>
-    {
-        public MinPriorityQueue(T[] A)
-            : base(A)
-        {
-
-        }
         public override bool Compare(int first, int second)
         {
             if (first > second)
                 return false;
             else return true;
         }
+
+        protected Action<int, T> xCreaseKey;
+
+        public void Insert(T key)
+        {
+            base.A.Heapsize++;
+            A.Array.Add(key);
+            xCreaseKey(A.Heapsize, key);
+        }
+    }
+
+
+    public class MinPriorityQueue<T> : PriorityQueue<T> where T : IComparable<T>
+    {
+        public MinPriorityQueue(List<T> A)
+            : base(A)
+        {
+            base.xCreaseKey = DecreaseKey;
+        }
+      
 
         public T HeapMinimum()
         {
@@ -59,22 +70,15 @@ namespace DataStructures
                 index = parent(index);
             }
         }
-        public void Insert(T key)
-        {
-            base.A.Heapsize++;
-            A.Array = new T[A.Array + 1];
-            A[A.Heapsize] = key;
-            DecreaseKey(A.Heapsize - 1, key);
-        }
-    }
 
+    }
 
     public class MaxPriorityQueue<T> : PriorityQueue<T> where T : IComparable<T>
     {
-        public MaxPriorityQueue(T[] A)
+        public MaxPriorityQueue(List<T> A)
             : base(A)
         {
-
+            base.xCreaseKey = IncreaseKey;
         }
 
         public override bool Compare(int first, int second)
