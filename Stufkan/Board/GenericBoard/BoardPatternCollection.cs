@@ -113,12 +113,15 @@ namespace Stufkan.Game
             return patternCollection.Contains(item);
         }
 
-        /// <summary>
-        /// Copies the entire list to the specified array, starting from arrayIndex
-        /// </summary>
-        /// <param name="array">The array to copy to</param>
-        /// <param name="arrayIndex">The index to start copying from</param>
-        public void CopyTo(BoardPattern[] array, int arrayIndex)
+
+        public IEnumerator<BoardPattern> GetEnumerator()
         {
-            patternCollection.CopyTo(array, arrayIndex);
+            return patternCollection.GetEnumerator();
         }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+} 
