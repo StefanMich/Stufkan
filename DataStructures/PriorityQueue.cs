@@ -22,6 +22,7 @@ namespace DataStructures
             A[0] = A[A.Heapsize];
             A.Heapsize--;
             Heapify(0);
+            A.Array.RemoveAt(A.Array.Count - 1);
             return max;
         }
 
