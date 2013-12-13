@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures
 {
+    
     public abstract class Heap<T> where T : IComparable<T>
     {
         HeapArray a;
@@ -14,18 +15,18 @@ namespace DataStructures
         public Heap(List<T> array)
         {
             a = new HeapArray(array);
+            BuildHeap();
         }
-
-        public void BuildHeap()
+        
+        protected void BuildHeap()
         {
-            //A.Heapsize= A.Length-1;
             for (int i = (int)Math.Ceiling((double)(A.Heapsize / 2) - 1); i >= 0; i--)
             {
                 Heapify(i);
             }
         }
 
-        public void Heapify(int i)
+        protected void Heapify(int i)
         {
             int l = left(i);
             int r = right(i);
@@ -46,7 +47,7 @@ namespace DataStructures
 
         }
 
-        public abstract bool Compare(int first, int second);
+        protected abstract bool Compare(int first, int second);
 
 
         public void Heapsort()
@@ -66,7 +67,7 @@ namespace DataStructures
         /// <param name="A">A.</param>
         /// <param name="index1">The index1.</param>
         /// <param name="index2">The index2.</param>
-        public void swap(int index1, int index2)
+        protected void swap(int index1, int index2)
         {
             T temp = A[index1];
             A[index1] = A[index2];
@@ -104,7 +105,7 @@ namespace DataStructures
             return 2 * i + 2;
         }
 
-        public T HeapMaxMin()
+        protected T HeapMaxMin()
         {
             return A[0];
         }
@@ -147,7 +148,7 @@ namespace DataStructures
         {
 
         }
-        public override bool Compare(int first, int second)
+        protected override bool Compare(int first, int second)
         {
             if (first > second)
                 return false;
@@ -163,7 +164,7 @@ namespace DataStructures
 
         }
 
-        public override bool Compare(int first, int second)
+        protected override bool Compare(int first, int second)
         {
             if (first > second)
                 return true;

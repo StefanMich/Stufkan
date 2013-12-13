@@ -25,7 +25,7 @@ namespace DataStructures
             return max;
         }
 
-        public override bool Compare(int first, int second)
+        protected override bool Compare(int first, int second)
         {
             if (first > second)
                 return false;
@@ -81,7 +81,7 @@ namespace DataStructures
             base.xCreaseKey = IncreaseKey;
         }
 
-        public override bool Compare(int first, int second)
+        protected override bool Compare(int first, int second)
         {
             if (first > second)
                 return true;
