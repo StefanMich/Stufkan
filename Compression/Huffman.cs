@@ -9,11 +9,52 @@ namespace Compression
 {
     public class Huffman
     {
+        public byte[] Encode(string s)
+        {
+            CharacterValuePair tree = CreateHuffmanTree(s);
+            Dictionary<char, string> prefixCodes = CreatePrefixCode(tree);
+
+
+            throw new NotImplementedException();
+        }
+
+        public byte[] EncodeString(string s, Dictionary<char, string> prefixcodes)
+        {
+            foreach (char c in s)
+            {
+                
+            }
+            throw new NotImplementedException();
+        }
+
+        private void EncodePrefixCode(byte b, int offset, string prefix)
+        {
+            throw new NotImplementedException();
+        }
 
         public CharacterValuePair CreateHuffmanTree(string s)
         {
             List<CharacterValuePair> freq = CalculateFrequencies(s);
             return CreateHuffmanTreeFromFrequencies(freq);
+        }
+
+        public Dictionary<char, string> CreatePrefixCode(CharacterValuePair root)
+        {
+            Dictionary<char, string> prefixCodes = new Dictionary<char, string>();
+            TraverseTree(root, prefixCodes, "");
+
+            return prefixCodes;
+        }
+
+        private void TraverseTree(CharacterValuePair node, Dictionary<char, string> dict, string prefix)
+        {
+            if (node.Left.Key == 'x')
+                TraverseTree(node.Left, dict, prefix + "0");
+            else dict.Add(node.Left.Key, prefix + "0");
+
+            if (node.Right.Key == 'x')
+                TraverseTree(node.Right, dict, prefix + "1");
+            else dict.Add(node.Right.Key, prefix + "1");
         }
 
         public CharacterValuePair CreateHuffmanTreeFromFrequencies(List<CharacterValuePair> C)
@@ -38,16 +79,16 @@ namespace Compression
         {
             Dictionary<char, int> frequencies = new Dictionary<char, int>();
 
-            for (int i = 65; i <= 90; i++)
+            for (int i = 0; i <= 127; i++)
             {
-                if (s.Contains((char)i) || s.Contains((char)(i+32) ))
+                if (s.Contains((char)i))
                     frequencies[(char)i] = 0;
             }
 
 
             foreach (char item in s)
             {
-                frequencies[Char.ToUpper(item)]++;
+                frequencies[item]++;
             }
 
             List<CharacterValuePair> frequencylist = new List<CharacterValuePair>();

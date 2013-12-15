@@ -18,12 +18,6 @@ namespace Compression.Tests
         }
 
         [TestMethod()]
-        public void CreateHuffmanTreeTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void CreateHuffmanTreeFromFrequenciesTest()
         {
             string s = "aaabbc";
@@ -45,6 +39,25 @@ namespace Compression.Tests
             Assert.AreEqual(res[0].Value, 3);
             Assert.AreEqual(res[1].Value, 2);
             Assert.AreEqual(res[2].Value, 1);
+        }
+
+        [TestMethod()]
+        public void CreatePrefixCodeTest()
+        {
+            string s = "aaabb.D";
+            Huffman.CharacterValuePair root= h.CreateHuffmanTree(s);
+            Dictionary<char,string> dict = h.CreatePrefixCode(root);
+
+            Assert.AreEqual(dict['a'], "0");
+            Assert.AreEqual(dict['b'], "10");
+            Assert.AreEqual(dict['D'], "110");
+            Assert.AreEqual(dict['.'], "111");
+        }
+
+        [TestMethod()]
+        public void CreateHuffmanTreeTest1()
+        {
+            Assert.Fail();
         }
     }
 }

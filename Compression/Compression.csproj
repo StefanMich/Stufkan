@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitWriter.cs" />
     <Compile Include="Huffman.cs" />
     <Compile Include="LZW.cs" />
     <Compile Include="Performance.cs" />
