@@ -69,8 +69,8 @@ namespace Compression.Tests
 
             if (bytes.Count > 2) Assert.Fail("There is more than one byte in the list");
 
-            int res1 = bytes[0] ^ 222;
-            int res2 = bytes[1] ^ 240;
+            int res1 = bytes[0] ^ 239;
+            int res2 = bytes[1] ^ 51;
 
             int res = res1 ^ res2;
 

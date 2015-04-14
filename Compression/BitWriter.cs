@@ -21,19 +21,31 @@ namespace Compression
         public List<byte> ByteStream { get { return stream; } }
         public void WriteBits(string s)
         {
-            byte b = StringToByte(s);
+            string temp = s;
+            while (temp.Length > 8)
+            {
+                string str = temp.Substring(0, 8);
+                temp = temp.Remove(0, 8);
+                WriteByte(str);
+            }
+            WriteByte(temp);
+        }
 
-            if (remaining < s.Length)
+        private void WriteByte(string s)
             {
-                stream[stream.Count - 1] |= (byte)(b >> ( s.Length - remaining));
-                stream.Add((byte)(b << remaining));
-                remaining = s.Length - remaining;
-            }
-            else
-            {
-                stream[stream.Count - 1] |= (byte)(b << (remaining - s.Length));
-                remaining = remaining - s.Length;
-            }
+                byte b = StringToByte(s);
+
+                if (remaining < s.Length)
+                {
+                    stream[stream.Count - 1] |= (byte)(b >> (s.Length - remaining));
+                    stream.Add((byte)(b << remaining));
+                    remaining = s.Length - remaining;
+                }
+                else
+                {
+                    stream[stream.Count - 1] |= (byte)(b << (remaining - s.Length));
+                    remaining = remaining - s.Length;
+                }
         }
 
         private byte StringToByte(string s)

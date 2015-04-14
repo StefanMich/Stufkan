@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,33 +10,93 @@ namespace Compression
 {
     public class Huffman
     {
-        public byte[] Encode(string s)
+        public void Encode(string s, string filename)
         {
-            CharacterValuePair tree = CreateHuffmanTree(s);
+            BinaryWriter t = new BinaryWriter(File.Open(filename, FileMode.Create));
+
+            List<CharacterValuePair> freq = CalculateFrequencies(s);
+            WriteFrequencies(freq, t);
+
+            CharacterValuePair tree = CreateHuffmanTreeFromFrequencies(freq);
+
             Dictionary<char, string> prefixCodes = CreatePrefixCode(tree);
 
+            BitWriter w = EncodeString(s, prefixCodes);
 
+            t.Write('\n');
+            t.Write(w.NumberOfBits);
+            foreach (byte b in w.ByteStream)
+            {
+                t.Write(b);
+            }
+
+            t.Close();
+        }
+
+        public string Decode(string filename)
+        {
+            BinaryReader stream = new BinaryReader(File.Open(filename, FileMode.Open));
+
+            List<CharacterValuePair> freq = ReadFrequencies(stream);
+
+            List<byte> message = new List<byte>();
+
+            while (stream.PeekChar() != -1)
+                message.Add(stream.ReadByte());
+
+
+            CharacterValuePair tree = CreateHuffmanTreeFromFrequencies(freq);
+
+            //decode the bytes from the tree
+            //return string
             throw new NotImplementedException();
         }
 
-        public byte[] EncodeString(string s, Dictionary<char, string> prefixcodes)
+        private string ReadMessage(CharacterValuePair tree, string message)
         {
+            throw new NotImplementedException();
+        }
+
+        private char ReadPrefixCode(char encoded, CharacterValuePair tree)
+        {
+            throw new NotImplementedException();
+        }
+
+        private List<CharacterValuePair> ReadFrequencies(BinaryReader stream)
+        {
+            List<CharacterValuePair> freq = new List<CharacterValuePair>();
+
+            char peek = (char)stream.PeekChar();
+
+            while (peek != '\n')
+            {
+                char key = stream.ReadChar();
+                int value = stream.ReadInt32();
+                freq.Add(new CharacterValuePair(key, value));
+                peek = (char)stream.PeekChar();
+            }
+
+            return freq;
+        }
+
+        public void WriteFrequencies(List<CharacterValuePair> freq, BinaryWriter s)
+        {
+            foreach (var item in freq)
+            {
+                s.Write(item.Key);
+                s.Write(item.Value);
+            }
+        }
+
+        public BitWriter EncodeString(string s, Dictionary<char, string> prefixcodes)
+        {
+            BitWriter w = new BitWriter();
+
             foreach (char c in s)
             {
-                
+                w.WriteBits(prefixcodes[c]);
             }
-            throw new NotImplementedException();
-        }
-
-        private void EncodePrefixCode(byte b, int offset, string prefix)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CharacterValuePair CreateHuffmanTree(string s)
-        {
-            List<CharacterValuePair> freq = CalculateFrequencies(s);
-            return CreateHuffmanTreeFromFrequencies(freq);
+            return w;
         }
 
         public Dictionary<char, string> CreatePrefixCode(CharacterValuePair root)

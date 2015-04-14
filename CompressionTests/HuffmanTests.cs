@@ -42,21 +42,17 @@ namespace Compression.Tests
         }
 
         [TestMethod()]
-        public void CreatePrefixCodeTest()
+        public void CreateHuffmanTreeTest1()
         {
-            string s = "aaabb.D";
-            Huffman.CharacterValuePair root= h.CreateHuffmanTree(s);
-            Dictionary<char,string> dict = h.CreatePrefixCode(root);
-
-            Assert.AreEqual(dict['a'], "0");
-            Assert.AreEqual(dict['b'], "10");
-            Assert.AreEqual(dict['D'], "110");
-            Assert.AreEqual(dict['.'], "111");
+            Assert.Fail();
         }
 
         [TestMethod()]
-        public void CreateHuffmanTreeTest1()
+        public void EncodeTest()
         {
+
+             h.Encode("Dette er en streng der skal encodes ved hjaelp af huffman koder", "test2");
+
             Assert.Fail();
         }
     }
